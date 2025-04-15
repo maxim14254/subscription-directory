@@ -34,6 +34,7 @@ HEADERS += \
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/lib/ -lsqlite3
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/lib/ -lsqlite3
+unix:!macx: LIBS += -lsqlite3
 
 INCLUDEPATH += $$PWD/.
 DEPENDPATH += $$PWD/.
@@ -42,3 +43,4 @@ win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/lib/libsqlite3
 else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/lib/libsqlite3.a
 else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/lib/sqlite3.lib
 else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/lib/sqlite3.lib
+
